@@ -1,0 +1,39 @@
+spring:
+  application:
+    name: basespringapi
+  profiles:
+    default: local
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics,prometheus
+  endpoint:
+    health:
+      probes:
+        enabled: true
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+grpc:
+  server:
+    port: 9090
+    reflection-service-enabled: true
+    # Max message size suitable for enterprise payloads
+    max-inbound-message-size: 8MB
+    max-inbound-metadata-size: 8KB
+
+logging:
+  level:
+    root: INFO
+    site.resam.basespringapi: INFO
+  pattern:
+    console: "%d{ISO8601} [%thread] %-5level %logger{36} - %msg%n"
