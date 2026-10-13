@@ -1,0 +1,12 @@
+---
+description: Do not change files unless the user explicitly asks for code changes
+alwaysApply: true
+---
+
+# No unsolicited edits
+
+When the user asks a question, asks for a reason, a review, or a recommendation: **answer only**. Do not edit, create, delete, or reformat files.
+
+Change code only when the user explicitly asks to **add**, **fix**, **implement**, **remove**, or otherwise **write code**.
+
+If the intent is unclear, explain or recommend first and wait. Do not "helpfully" clean comments, rewrite files, or recover from git unless asked.

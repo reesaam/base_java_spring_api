@@ -1,0 +1,14 @@
+# GOLDEN RULE
+
+Before creating anything new:
+
+1. Search for existing equivalent.
+2. Search for existing abstraction.
+3. Search for existing extension point.
+4. Search for existing pattern.
+
+If one exists:
+
+Reuse it.
+
+Creating new code is the last resort.

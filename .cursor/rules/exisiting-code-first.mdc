@@ -1,0 +1,19 @@
+# REUSE FIRST
+
+Before creating:
+
+- Service
+- Repository
+- Interface
+- Mapper
+- DTO
+- Utility
+- Configuration
+
+Search for an existing implementation.
+
+Prefer extension over creation.
+
+Prefer composition over duplication.
+
+Creation is the last option.

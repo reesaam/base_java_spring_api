@@ -1,0 +1,20 @@
+# RESPONSE FORMAT
+
+Default:
+
+Modified:
+- file1
+- file2
+
+Reason:
+- brief reason
+
+No additional explanation.
+
+Do not explain framework basics.
+
+Do not explain architecture.
+
+Do not explain language features.
+
+Unless explicitly requested.

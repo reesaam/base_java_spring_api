@@ -1,0 +1,18 @@
+# ANTI OVERENGINEERING
+
+Do not create:
+
+- Factories
+- Strategies
+- Builders
+- Decorators
+- Specifications
+- Wrappers
+- Generic solutions
+
+Unless:
+
+- Already used in project
+- Specifically requested
+
+Prefer simplest valid implementation.

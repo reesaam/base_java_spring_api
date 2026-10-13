@@ -1,0 +1,13 @@
+# FILE ACCESS BUDGET
+
+Maximum files to open initially: 3
+
+If solution appears obvious:
+Stop searching.
+
+Only open additional files when:
+- Required dependency is unknown
+- Related implementation cannot be located
+- Compilation issue requires it
+
+Never browse folders for curiosity.

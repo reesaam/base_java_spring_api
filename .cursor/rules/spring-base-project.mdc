@@ -1,0 +1,401 @@
+# SPRING BASE PROJECT ARCHITECT
+
+You are contributing to a highly opinionated Spring Boot starter project.
+
+Your responsibility is to preserve architecture consistency above all else.
+
+Never introduce shortcuts that violate architecture.
+
+Always prefer consistency over convenience.
+
+---
+
+# ARCHITECTURE
+
+Architecture Style:
+
+- Vertical Slice Architecture
+- Hexagonal Architecture
+- Domain Driven Design
+
+Dependency Direction:
+
+Controller
+→ UseCase
+→ Domain
+→ Port
+→ Infrastructure
+
+Allowed:
+
+Controller -> UseCase
+
+Forbidden:
+
+Controller -> Repository
+Controller -> Entity
+Controller -> JpaRepository
+UseCase -> JpaRepository
+Domain -> Spring
+Domain -> Database
+
+Always preserve dependency flow.
+
+---
+
+# FEATURE STRUCTURE
+
+Every business feature owns its files.
+
+Structure:
+
+feature/
+├── controller/
+├── usecase/
+├── domain/
+├── dto/
+├── mapper/
+├── port/
+│   ├── input/
+│   └── output/
+├── repository/
+├── service/
+├── event/
+└── validator/
+
+Never place feature code inside common folders.
+
+Prefer feature ownership.
+
+---
+
+# DOMAIN LAYER
+
+Domain is the core.
+
+Domain must be:
+
+- Pure Java
+- Framework independent
+- Testable
+- Immutable where possible
+
+Forbidden:
+
+@Entity
+@Service
+@Repository
+@Component
+@Autowired
+Spring imports
+
+Domain must not know Spring exists.
+
+---
+
+# DEPENDENCY INJECTION
+
+Always use constructor injection.
+
+Forbidden:
+
+@Autowired fields
+Setter injection
+
+Use:
+
+@RequiredArgsConstructor
+
+or explicit constructor.
+
+---
+
+# INTERFACES
+
+Prefer interfaces.
+
+Every significant service must expose an interface.
+
+Every infrastructure implementation must implement a port.
+
+Never code against implementations when an abstraction exists.
+
+---
+
+# REPOSITORIES
+
+Repository access must go through ports.
+
+Controller -> Repository is forbidden.
+
+UseCase -> Repository is forbidden.
+
+Correct:
+
+UseCase
+→ OutputPort
+→ InfrastructureRepository
+
+---
+
+# DTO RULES
+
+Feature owned DTOs.
+
+Never create shared DTOs unless truly generic.
+
+Prefer:
+
+CreateUserRequest
+CreateUserResponse
+
+instead of:
+
+UserDto
+
+Use explicit models.
+
+---
+
+# RESPONSE WRAPPERS
+
+Always use standardized wrappers.
+
+Never return raw entities.
+
+Never return Optional.
+
+Never return primitive status values.
+
+Use application result models.
+
+---
+
+# DOMAIN EVENTS
+
+Business events belong to domain.
+
+When business state changes:
+
+Consider raising a domain event.
+
+Events must be business-focused.
+
+Good:
+
+UserCreatedEvent
+
+Bad:
+
+DatabaseInsertEvent
+
+---
+
+# ENUMS
+
+Prefer enums over constants.
+
+Forbidden:
+
+public static final String
+
+when enum is possible.
+
+Use enums for:
+
+- statuses
+- roles
+- event types
+- logger categories
+- error codes
+
+---
+
+# MAPPERS
+
+Reuse mapper infrastructure.
+
+Use project-standard mapper annotations.
+
+Never duplicate mapping logic.
+
+Generated mapping is preferred.
+
+Custom mapping only when required.
+
+---
+
+# CONFIGURATION
+
+All configuration must use:
+
+@ConfigurationProperties
+
+Forbidden:
+
+@Value
+
+unless strictly necessary.
+
+Use strongly typed configuration.
+
+---
+
+# ENVIRONMENTS
+
+Design for:
+
+local
+dev
+test
+stage
+prod
+
+Assume additional environments may appear later.
+
+Never hardcode environment values.
+
+---
+
+# LOGGING
+
+Use centralized logging.
+
+Never use random logger creation.
+
+Every log should contain when available:
+
+- request id
+- correlation id
+- user id
+- class
+- method
+
+Prefer structured logging.
+
+---
+
+# EXCEPTIONS
+
+Use centralized exception handling.
+
+Never catch and ignore exceptions.
+
+Never return exception messages directly.
+
+Convert exceptions to standardized error responses.
+
+---
+
+# SECURITY
+
+JWT + Refresh Token architecture.
+
+Never create custom security shortcuts.
+
+Always:
+
+- validate tokens
+- validate permissions
+- validate ownership
+
+Security first.
+
+---
+
+# COMMENTS
+
+Every public type requires a brief comment.
+
+Every public method requires a brief comment.
+
+Maximum:
+
+1-3 lines.
+
+Explain WHY.
+
+Not WHAT.
+
+---
+
+# REUSE PRINCIPLE
+
+Before creating:
+
+- service
+- dto
+- exception
+- mapper
+- annotation
+- util
+- helper
+- validator
+
+Search for an existing implementation.
+
+Creating new code is the last option.
+
+---
+
+# TOKEN OPTIMIZATION
+
+Before reading files:
+
+1. Search first.
+2. Open maximum 3 files.
+3. Expand only if blocked.
+4. Stop reading when enough context exists.
+
+Never analyze unrelated modules.
+
+Never scan entire repository.
+
+Never perform project audits.
+
+Never perform architecture reviews unless requested.
+
+---
+
+# CODE GENERATION
+
+Prefer modifying existing code.
+
+Do not rewrite files.
+
+Do not regenerate unchanged code.
+
+Generate the smallest correct change.
+
+Touch the fewest files possible.
+
+---
+
+# FUTURE PROOFING
+
+Always assume:
+
+- another database may be added
+- another storage provider may be added
+- another messaging system may be added
+- another authentication provider may be added
+- another deployment environment may be added
+
+Design extension points early.
+
+Do not couple business logic to infrastructure.
+
+---
+
+# DEVELOPER EXPERIENCE
+
+Prefer solutions that:
+
+- prevent mistakes
+- reduce duplication
+- improve discoverability
+- improve consistency
+
+If two solutions are equal:
+
+Choose the one harder to misuse.

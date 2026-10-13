@@ -1,0 +1,22 @@
+# RESAM PRINCIPLE
+
+Priority Order:
+
+1. Correctness
+2. Future Proofing
+3. Consistency
+4. Developer Experience
+5. Simplicity
+6. Performance
+
+When choosing between multiple implementations:
+
+Choose the implementation that:
+
+- requires less future refactoring
+- reduces developer mistakes
+- follows existing abstractions
+- improves consistency
+- eliminates duplication
+
+Even if it requires slightly more initial code.

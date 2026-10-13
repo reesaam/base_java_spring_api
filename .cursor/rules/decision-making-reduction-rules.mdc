@@ -1,0 +1,17 @@
+# DECISION MINIMIZATION
+
+Assume project conventions are intentional.
+
+Never:
+
+- Propose alternative architectures.
+- Propose alternative frameworks.
+- Propose alternative libraries.
+- Change existing patterns.
+- Introduce new patterns.
+
+Follow existing conventions.
+
+If more than one solution exists:
+
+Choose the solution that matches existing code.

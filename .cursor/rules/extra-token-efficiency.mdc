@@ -1,0 +1,32 @@
+# ULTRA-LOW-COST MODE
+
+Default behavior:
+
+- Read fewer files.
+- Think shorter.
+- Answer shorter.
+- Generate less code.
+
+Never:
+- Explain concepts.
+- Explain framework basics.
+- Explain architecture.
+- Explain alternatives.
+- Explain tradeoffs.
+
+Unless explicitly requested.
+
+When multiple solutions exist:
+
+Choose the solution requiring:
+1. Fewer file changes.
+2. Less code.
+3. Less context.
+4. Less maintenance.
+
+Output only:
+- Patch
+- Changed code
+- Required notes
+
+Nothing else.

@@ -1,0 +1,214 @@
+# SYSTEM: Token Efficiency and Architecture Enforcement
+
+You are working in a large professional codebase.
+
+Your PRIMARY objective is to solve the task while minimizing token consumption, file reads, tool calls, code generation, and unnecessary reasoning.
+
+# TOKEN OPTIMIZATION PRINCIPLES
+
+Follow these rules in order:
+
+1. Read the minimum amount of code necessary.
+2. Prefer targeted searches over repository-wide analysis.
+3. Never scan the entire project unless explicitly requested.
+4. Never open files "just to understand the project."
+5. Never analyze folders unrelated to the task.
+6. Stop gathering context as soon as a valid solution is possible.
+7. Reuse discovered information.
+8. Do not re-read files already analyzed unless modified.
+9. Avoid speculative investigation.
+10. Produce the smallest valid change.
+
+# FILE SEARCH STRATEGY
+
+Before opening files:
+
+1. Identify likely files.
+2. Open a maximum of 3 files initially.
+3. Analyze those files.
+4. Expand only if blocked.
+5. Open one additional file at a time.
+6. Stop searching immediately once enough context exists.
+
+Forbidden:
+
+- Reading entire repository
+- Opening all files in a feature
+- Opening sibling folders without necessity
+- Exploring infrastructure unless requested
+- Exploring tests unless needed
+
+# CODE GENERATION RULES
+
+Generate the smallest amount of code possible.
+
+Always:
+
+- Modify existing code before creating new code.
+- Reuse existing abstractions.
+- Reuse existing helpers.
+- Reuse existing services.
+- Reuse existing interfaces.
+
+Never:
+
+- Rewrite entire files.
+- Regenerate unchanged code.
+- Create duplicate helpers.
+- Create duplicate DTOs.
+- Create duplicate services.
+- Create duplicate repositories.
+
+# RESPONSE RULES
+
+Keep responses extremely concise.
+
+Default format:
+
+1. What changed
+2. Why
+3. Files modified
+
+Maximum:
+
+- Five bullets
+- Short explanations
+- No tutorials
+- No architecture discussions unless requested
+
+# REFACTORING RULES
+
+When refactoring:
+
+1. Preserve behavior.
+2. Preserve public API.
+3. Preserve folder structure.
+4. Preserve naming.
+5. Preserve architecture.
+
+Only perform requested change.
+
+Do not perform:
+
+- Cleanup
+- Formatting refactors
+- Modernization
+- Optimization
+- Architectural improvements
+
+Unless explicitly requested.
+
+# INVESTIGATION RULES
+
+When debugging:
+
+1. Find likely root cause.
+2. Inspect only directly related code.
+3. Confirm cause.
+4. Fix cause.
+5. Stop.
+
+Never perform broad project audits.
+
+Never search unrelated modules.
+
+# ARCHITECTURE RULES
+
+Follow existing architecture.
+
+Do not suggest alternatives.
+
+Assume architectural decisions are intentional.
+
+Respect:
+
+- Existing layers
+- Existing naming conventions
+- Existing dependency flow
+- Existing abstractions
+
+# JAVA SPRING PROJECT RULES
+
+For this repository assume:
+
+Architecture:
+- Vertical Slice
+- Hexagonal Architecture
+- Domain Driven Design
+
+Always:
+
+- Prefer interfaces over concrete classes.
+- Keep strict dependency direction.
+- Use constructor injection.
+- Use enums instead of constants.
+- Reuse base abstractions.
+- Reuse existing wrappers.
+- Reuse existing annotations.
+- Reuse existing result types.
+
+Never:
+
+- Inject repositories into controllers.
+- Put business logic in controllers.
+- Skip use cases/application services.
+- Bypass ports.
+- Introduce cyclic dependencies.
+
+# DOMAIN RULES
+
+Prefer:
+
+Domain
+→ Application
+→ Infrastructure
+
+Never reverse dependency flow.
+
+Domain layer must remain framework-independent.
+
+Never place Spring dependencies inside Domain.
+
+# DUPLICATION ELIMINATION
+
+Before creating:
+
+- Class
+- DTO
+- Interface
+- Mapper
+- Exception
+- Utility
+- Service
+- Repository
+
+Search for an existing equivalent.
+
+If one exists:
+
+Reuse it.
+
+Do not recreate it.
+
+# CONTEXT MANAGEMENT
+
+Assume context is expensive.
+
+For every action ask:
+
+"Do I truly need this information to solve the task?"
+
+If no:
+
+Do not read it.
+
+# OUTPUT RULE
+
+The best solution is:
+
+- Correct
+- Minimal
+- Reuses existing code
+- Touches few files
+- Uses few tokens
+- Produces no unnecessary explanation

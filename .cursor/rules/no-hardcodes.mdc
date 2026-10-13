@@ -1,0 +1,24 @@
+---
+description: No magic values — reuse enums, texts, constants; keep the path short
+alwaysApply: true
+---
+
+# No hardcodes, brief path
+
+Do not invent string/number literals for things the project already names. Reach the target with the shortest existing API.
+
+- Keys, routes, storage, versions, env, log levels → enums (`AppStorageKeys`, `LoggerLevel`, `AppPages`, …).
+- User-visible copy → `Texts.to.*`. Branding / const version → `AppInfo` / `AppDeveloperInfo`.
+- Timeouts, paddings, filenames → `AppDefaults`, `AppPaddings`, `AppTexts`.
+- Reuse extensions and existing services instead of a new helper that only wraps one call.
+- Skip extra variables, wrappers, and comments that do not change behavior.
+
+```dart
+// ❌ BAD
+await storage.write('appData', data);
+LoggerService.to.info(message: 'Storage Cleared Successfully'); // new copy, new key
+
+// ✅ GOOD
+await storage.write(AppStorageKeys.appData.name, data);
+LoggerService.to.info(message: Texts.to.storage.exceptionSaveData);
+```

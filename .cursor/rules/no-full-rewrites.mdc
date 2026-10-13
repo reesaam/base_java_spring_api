@@ -1,0 +1,27 @@
+---
+description: Never fully rewrite existing user-written code; edit in place and ask when unsure
+alwaysApply: true
+---
+
+# No full rewrites
+
+Never replace an existing file or large block that the user wrote. **Edit in place** with the smallest change that solves the request.
+
+- Keep the user's comments, structure, naming, and guidance text unless they explicitly ask to remove them.
+- Do not "simplify" or regenerate a file because a nearby design changed.
+- If a comment looks outdated, **ask** before deleting or rewriting it.
+- If something is unclear, inconsistent, or you do not know the intended design: **ask**. Do not guess and overwrite.
+
+Prefer:
+
+1 file change
+2 files if necessary
+3 files maximum
+
+Never perform project-wide changes.
+
+Never touch unrelated files.
+
+If a request seems to require many file changes:
+
+Look for existing abstraction first.

@@ -1,0 +1,13 @@
+---
+description: Add a brief comment on new code explaining why it exists and what it does
+alwaysApply: true
+---
+
+# Comment why and what
+
+When adding or changing code, write a **brief** comment on each new type, member, and non-obvious block:
+
+- **Why** it is there (the reason / problem it solves)
+- **What** it does (the behavior)
+
+Do not narrate every line. Keep existing user comments. Skip comments on trivial one-line wrappers unless the mapping is not obvious.

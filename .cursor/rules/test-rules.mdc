@@ -1,0 +1,14 @@
+# TESTING
+
+Only create:
+
+- New tests for new behavior
+- Updated tests for modified behavior
+
+Do not generate exhaustive test suites.
+
+Reuse test helpers.
+
+Reuse fixtures.
+
+Reuse factories.
