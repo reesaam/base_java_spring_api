@@ -20,6 +20,7 @@ These override the master prompt and the docs wherever they conflict.
 | D7 | Database = connection module only: `DatabaseConfiguration` (connection string, username, password, pool settings) and a `DatabaseConnector` that provides the `DataSource`, behind a `database.enabled` flag. No JPA entities, schemas, migrations, H2, Oracle tests or `DatabaseConfigurationProvider`. |
 | D8 | Heavy checks are run by the owner: Oracle, Docker, Redis, Kafka, RabbitMQ, MinIO, Vault, Elastic, and running the app against real infrastructure. The agent only runs `mvn -q compile`, unit tests, and ArchUnit. |
 | D9 | The owner picks the chat model per phase from the recommendation below. The agent does not spawn subagents (they re-read context and cost more). |
+| D10 | Ask the owner and wait when more than one real choice exists, the decision is important, the work would cost many tokens, or something looks not worth building now. Do not pick, skip, or implement past that point. An existing owner decision is not an open choice. |
 
 ## Derived decisions (confirm or change)
 
@@ -34,9 +35,10 @@ These override the master prompt and the docs wherever they conflict.
 
 1. Owner opens a new chat with the recommended model and sends the start command.
 2. Agent reads only this file and the docs listed for the phase.
-3. Agent implements the phase, then runs light checks (D8).
-4. Agent appends a handoff entry (max 10 lines) to **Handoff Log** at the bottom.
-5. Owner reviews, runs heavy checks if needed, and starts the next phase.
+3. If a choice is open, important, token-heavy, or looks skippable, the agent asks the owner and waits (D10).
+4. Agent implements the phase, then runs light checks (D8).
+5. Agent appends a handoff entry (max 10 lines) to **Handoff Log** at the bottom.
+6. Owner reviews, runs heavy checks if needed, and starts the next phase.
 
 Model guide:
 

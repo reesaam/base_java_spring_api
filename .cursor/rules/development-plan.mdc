@@ -15,4 +15,6 @@ On `Start Phase N`:
 4. Run light checks only: `mvn -q compile`, unit tests, ArchUnit. Never run Docker, Oracle or external infrastructure.
 5. Append a handoff entry (max 10 lines) to the Handoff Log.
 
+Ask and wait (D10) when a real choice is open, the decision is important, the work would cost many tokens, or something looks not worth building now. Do not pick, skip, or implement past that point.
+
 Database: connection module only (configuration + `DatabaseConnector`). No JPA, schemas, H2 or Oracle tests.

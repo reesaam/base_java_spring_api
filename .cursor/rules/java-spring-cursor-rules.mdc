@@ -1,0 +1,80 @@
+---
+description: Spring Boot conventions for this platform
+alwaysApply: true
+---
+
+You are an expert in Java programming, Spring Boot 3.x, Spring Framework, Maven, JUnit 5, Mockito, ArchUnit, MapStruct, Lombok, and related Java technologies.
+
+  Code Style and Structure
+  - Write clean, efficient, and well-documented Java code using Spring Boot best practices for this platform.
+  - Follow this project's feature layout (`api/`, `dto/`, `domain/`, `repository/`, `mapper/`, `usecase/`, `events/`, `permissions/`, `validators/`, `enums/`).
+  - Use descriptive method and variable names following camelCase convention.
+  - Structure the application with consistent organization (controllers, use cases, domain, repositories, configuration).
+
+  Spring Specifics
+  - Use Spring Boot DevTools and `spring-boot:run` for local development cycles.
+  - Use Spring annotations (`@RestController`, `@Service`, `@Component`, `@Configuration`) and constructor injection.
+  - Add capabilities through Spring Boot starters, not extra frameworks.
+  - Package with the `spring-boot-maven-plugin`. Do not add a native-image build unless the owner asks.
+
+  Naming Conventions
+  - Use PascalCase for class names (e.g., UserController, OrderService).
+  - Use camelCase for method and variable names (e.g., findUserById, isOrderValid).
+  - Use ALL_CAPS for constants (e.g., MAX_RETRY_ATTEMPTS, DEFAULT_PAGE_SIZE). Prefer enums when the project already names the value.
+
+  Java and Spring Usage
+  - Use Java 17 or later features where appropriate (e.g., records, sealed classes).
+  - Use the Spring Boot parent BOM for dependency management, ensuring consistent versions.
+  - Use this platform's services (`AppConfiguration`, `CacheProvider`, `EventPublisher`, `AppLogger`).
+  - Keep domain code free of Spring imports.
+
+  Configuration and Properties
+  - Store configuration in profile YAML (`application.yml` and `application-local.yml`, `dev`, `test`, `stage`, `prod`).
+  - Read settings through `AppConfiguration` modules. Never `@Value`.
+  - Rely on Spring profiles (`local`, `dev`, `test`, `stage`, `prod`) for environment-specific configuration.
+
+  Dependency Injection and IoC
+  - Use Spring constructor injection (`@RequiredArgsConstructor` or an explicit constructor).
+  - Prefer constructor injection over field injection. No `@Autowired` fields.
+
+  Testing
+  - Write tests with JUnit 5 and Mockito. Use ArchUnit for architecture rules.
+  - Use `@SpringBootTest` or `@WebMvcTest` for Spring slices, and `@ExtendWith(MockitoExtension.class)` for unit tests.
+  - Use this platform's in-memory adapters for persistence tests. No H2, Testcontainers, or Oracle tests from the agent.
+
+  Performance and Scalability
+  - Optimize the Spring Boot JAR and starter set; do not add native-image properties.
+  - Cache through `CacheProvider` / `CacheService`.
+  - Publish work through `EventPublisher` and messaging ports.
+  - Keep database access behind `DatabaseConnector` and repository ports.
+
+  Security
+  - Use this platform's JWT, refresh tokens, `@RequirePermission`, `CurrentUser`, and `TokenData`.
+  - Do not add a parallel Spring Security shortcut.
+  - Configure CORS and security headers through Spring Security and `AppConfiguration`.
+
+  Logging and Monitoring
+  - Use `AppLogger`, `LogCategory`, `LogEvent`, `LogContext`, and `LogData`.
+  - Use `AuditService` and request context for diagnostics.
+  - Use proper log levels (ERROR, WARN, INFO, DEBUG) and structured logging.
+
+  API Documentation
+  - Use Swagger / OpenAPI and Scalar as this platform specifies.
+  - Provide detailed OpenAPI annotations for controllers, operations, and schemas.
+
+  Data Access
+  - Database is the connection module only: `DatabaseConfiguration` and `DatabaseConnector` (`DataSource`), behind `database.enabled`.
+  - No JPA entities, schemas, or migrations unless the owner asks.
+  - Repository ports stay in `domain/`; adapters live in `repository/`.
+
+  Build and Deployment
+  - Use Maven with the Spring Boot plugin for building and packaging.
+  - Keep the project's `Dockerfile` and `docker-compose.yml` minimal. The agent does not run Docker or Oracle.
+  - Employ Spring profiles and environment variables for deployment targets (`local`, `dev`, `test`, `stage`, `prod`).
+
+  Follow best practices for:
+  - RESTful API design (proper use of HTTP methods and status codes) via `@RestController`.
+  - This Spring Boot starter platform: reuse existing base types instead of a new microservice stack.
+  - Asynchronous work through this platform's events and messaging ports.
+
+  Adhere to SOLID principles to ensure high cohesion and low coupling in Spring applications.

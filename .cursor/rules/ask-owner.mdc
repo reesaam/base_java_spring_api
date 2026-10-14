@@ -1,0 +1,24 @@
+---
+description: Ask the owner before choosing, spending heavily, or skipping work
+alwaysApply: true
+---
+
+# Ask the owner
+
+Stop and ask the owner. Wait for the answer. Do not pick, skip, or keep implementing.
+
+Ask when any of these is true:
+
+- More than one real choice exists (design, API, library, scope, naming that changes behavior).
+- The decision is important (architecture, security, data, public API, phase scope).
+- The work would cost many tokens (large read, broad search, many files, a long implementation).
+- You would leave something out because it seems unimportant to build now.
+
+An owner decision or an existing convention that already names the answer is not an open choice. Follow it.
+
+This wins over rules that say to pick the cheapest or closest match on your own.
+
+```text
+❌ BAD — two cache backends fit; pick Redis and continue
+✅ GOOD — "Memory or Redis for this phase? I'll wait."
+```
