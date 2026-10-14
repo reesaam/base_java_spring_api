@@ -5,21 +5,18 @@ alwaysApply: true
 
 # OOP
 
-Write object-oriented Dart. Behavior lives on types, not loose maps, globals, or script-style functions.
+Write object-oriented Java. Behavior lives on types, not loose maps, static utility bags, or global state.
 
-- Encapsulate state. Dependents call methods/getters; they do not poke fields or parse maps.
-- New work is a class (service, component, model, enum). Do not add a bag of top-level functions when a type already owns that job.
-- GetX abstracts stay abstract: `Get.find` / `Foo.to` on the abstract; register the impl with `@GetPut.service(as: Abstract)`.
-- Prefer composition over copying logic. Extend `CoreService` / `CoreComponent` / `CoreController` / `CoreView` instead of parallel hierarchies.
-- Do not leak plugin types (`PackageInfo`, `Dio`, storage engines) past the owning service. Callers use this app's models.
+- Encapsulate state. Dependents call methods; they do not touch fields or parse `Map<String, Object>`.
+- New work is a class (use case, service, model, record, enum). Do not add a static helper class when a type already owns that job.
+- Abstractions stay abstract: inject the interface (port / `CacheProvider` / `FileStorage`), never the implementation. Register the impl as the Spring bean behind it.
+- Prefer composition over copying logic. Extend the core base types (`BaseUseCase`, `BaseController`, `AggregateRoot`, `BaseMapper`, …) instead of parallel hierarchies.
+- Do not leak library types (`RedisTemplate`, `MinioClient`, `KafkaTemplate`, `HttpServletRequest`) past the owning adapter. Callers use this project's models.
 
-```dart
-// ❌ BAD — script + raw map
-Map<String, String> deviceFacts() => {'os': Platform.operatingSystem};
+```java
+// ❌ BAD — loose map
+Map<String, String> deviceFacts() { return Map.of("os", System.getProperty("os.name")); }
 
 // ✅ GOOD — type owns the data
-class AppDeviceSnapshot {
-  const AppDeviceSnapshot({required this.os});
-  final String os;
-}
+public record DeviceSnapshot(String os) { }
 ```

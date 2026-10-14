@@ -7,18 +7,18 @@ alwaysApply: true
 
 Do not invent string/number literals for things the project already names. Reach the target with the shortest existing API.
 
-- Keys, routes, storage, versions, env, log levels → enums (`AppStorageKeys`, `LoggerLevel`, `AppPages`, …).
-- User-visible copy → `Texts.to.*`. Branding / const version → `AppInfo` / `AppDeveloperInfo`.
-- Timeouts, paddings, filenames → `AppDefaults`, `AppPaddings`, `AppTexts`.
-- Reuse extensions and existing services instead of a new helper that only wraps one call.
+- Keys, statuses, roles, permissions, log events, error codes, environments → enums (`MessageKey`, `LogEvent`, `Permission`, `EnvironmentType`, …).
+- User-visible text → `MessageKey` + localization files (`en.yml`, …). Never inline messages.
+- Project name, version, URLs, timeouts, paths, secrets → `AppConfiguration` (`config.project()`, `config.jwt()`, …). Never `@Value`.
+- Reuse existing core services instead of a new helper that only wraps one call.
 - Skip extra variables, wrappers, and comments that do not change behavior.
 
-```dart
+```java
 // ❌ BAD
-await storage.write('appData', data);
-LoggerService.to.info(message: 'Storage Cleared Successfully'); // new copy, new key
+cache.put("user:" + id, user, Duration.ofMinutes(10));
+throw new NotFoundException("User not found"); // new literal, new text
 
 // ✅ GOOD
-await storage.write(AppStorageKeys.appData.name, data);
-LoggerService.to.info(message: Texts.to.storage.exceptionSaveData);
+cache.put(CacheKey.USER.of(id), user, config.cache().userTtl());
+throw new NotFoundException(MessageKey.USER_NOT_FOUND);
 ```

@@ -1,0 +1,18 @@
+---
+description: Follow the phased development plan and owner decisions
+alwaysApply: true
+---
+
+# DEVELOPMENT PLAN
+
+`docs/Development Plan.md` is the working plan. Its **Owner Decisions** override the master prompt and docs.
+
+On `Start Phase N`:
+
+1. Read `docs/Development Plan.md` (decisions, phase N row, Handoff Log).
+2. Read only the docs listed for phase N. Never read `AI Implementation Spec.md`, `Implementation Brief.md`, `Executive Architecture Proposal.md`, `Manifest Summary.md`.
+3. Implement only phase N scope. Creating new files is expected in this greenfield build; search only existing project code before creating.
+4. Run light checks only: `mvn -q compile`, unit tests, ArchUnit. Never run Docker, Oracle or external infrastructure.
+5. Append a handoff entry (max 10 lines) to the Handoff Log.
+
+Database: connection module only (configuration + `DatabaseConnector`). No JPA, schemas, H2 or Oracle tests.

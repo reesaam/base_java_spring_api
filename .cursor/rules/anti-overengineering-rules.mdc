@@ -1,18 +1,18 @@
 # ANTI OVERENGINEERING
 
-Do not create:
+Patterns are allowed when they make code simpler to read or use:
 
-- Factories
-- Strategies
-- Builders
-- Decorators
-- Specifications
-- Wrappers
-- Generic solutions
+- Factories (static `create(...)` for simple objects, a factory class only for complex construction)
+- Builders (`@Builder(toBuilder = true)` on DTOs)
+- Provider / Strategy (only where the spec names multiple implementations: cache, storage, messaging, mail, configuration)
+- Wrappers (only the standard ones: `ApiResponse`, `ApiError`, `BaseResult`)
 
-Unless:
+Strictly avoid overengineering:
 
-- Already used in project
-- Specifically requested
+- No abstraction with a single imaginary future use. One real use → no interface beyond the required port.
+- No generic frameworks, reflection tricks, or meta-programming when plain code works.
+- No extra layers, decorators, or specifications unless requested.
+- No configuration options nobody asked for.
+- A junior developer must understand any class in under a minute. If not, simplify.
 
-Prefer simplest valid implementation.
+Prefer the simplest valid implementation.

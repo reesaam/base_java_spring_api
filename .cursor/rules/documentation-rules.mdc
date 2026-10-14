@@ -8,7 +8,6 @@ Method comments:
 
 Maximum 3 lines.
 
-Explain WHY.
-Do not explain WHAT.
+Explain WHAT it does, and WHY when not obvious.
 
 Do not generate tutorials.
