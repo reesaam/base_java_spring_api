@@ -169,9 +169,7 @@ CreateUserUseCase
         ↓
 UserRepository
         ↓
-JpaUserRepository
-        ↓
-Database
+UserRepositoryImpl
 ```
 
 Business logic does not care about the implementation.
@@ -447,8 +445,6 @@ Contains all business knowledge.
 Contains:
 
 ```text
-JPA Entities
-
 Repository Implementations
 
 Database Adapters
@@ -546,8 +542,6 @@ Vault
 Environment Variables
 
 YAML Files
-
-Database
 
 Remote Providers
 ```

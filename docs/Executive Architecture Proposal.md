@@ -151,7 +151,6 @@ Supports multiple configuration sources:
 - Local Configuration Files
 - Environment Variables
 - Vault
-- Database Configuration
 - Remote Configuration Providers
 
 Provides centralized and strongly typed configuration management.
@@ -200,7 +199,6 @@ Automatically generated and maintained:
 
 Prepared support for:
 
-- Oracle Database
 - Redis
 - Kafka
 - RabbitMQ

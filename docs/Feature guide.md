@@ -98,8 +98,6 @@ No Spring dependencies allowed.
 Contains:
 
 ```text
-Jpa Entities
-
 Persistence Implementations
 
 Database Adapters

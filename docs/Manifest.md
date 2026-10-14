@@ -278,8 +278,6 @@ Domain layer must never depend on:
 ```text
 Spring
 
-JPA
-
 Infrastructure
 
 External Services
@@ -288,8 +286,6 @@ External Services
 Forbidden:
 
 ```java
-@Entity
-
 @Service
 
 @Autowired
@@ -298,29 +294,6 @@ Forbidden:
 ```
 
 inside domain.
-
----
-
-# Persistence Strategy
-
-Always separate:
-
-```text
-Domain Entity
-```
-
-from
-
-```text
-JPA Entity
-```
-
-Example:
-
-```text
-User
-UserJpaEntity
-```
 
 ---
 
@@ -507,9 +480,6 @@ UserDto dto =
 
 User user =
     request.adapt(User.class);
-
-UserJpaEntity entity =
-    user.adapt(UserJpaEntity.class);
 ```
 
 Custom mapping supported.
@@ -788,8 +758,6 @@ Environment Variables
 
 Profile Yml
 
-Database
-
 Remote Config API
 
 Defaults
@@ -809,8 +777,6 @@ Implementations:
 YamlConfigurationProvider
 
 VaultConfigurationProvider
-
-DatabaseConfigurationProvider
 
 RemoteConfigurationProvider
 ```

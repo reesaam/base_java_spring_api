@@ -61,12 +61,6 @@ Build Tool:
 Maven
 ```
 
-Database:
-
-```text
-Oracle
-```
-
 Testing:
 
 ```text
@@ -484,12 +478,6 @@ Implementation:
 
 ```text
 repository/UserRepositoryImpl
-```
-
-Database Model:
-
-```text
-repository/UserJpaEntity
 ```
 
 ---
@@ -922,8 +910,6 @@ YamlConfigurationProvider
 
 VaultConfigurationProvider
 
-DatabaseConfigurationProvider
-
 RemoteConfigurationProvider
 ```
 
@@ -1094,8 +1080,6 @@ Future providers supported.
 Prepare abstractions, configs and implementations for:
 
 ```text
-Oracle
-
 Redis
 
 Kafka
@@ -1376,10 +1360,6 @@ Project is complete only if:
 ✅ All integration tests pass
 
 ✅ ArchUnit passes
-
-✅ Oracle integration works
-
-✅ H2 test database works
 
 ✅ JWT works
 

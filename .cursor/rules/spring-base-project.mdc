@@ -34,8 +34,6 @@ Forbidden:
 
 Controller -> Repository
 Controller -> Entity
-Controller -> JpaRepository
-UseCase -> JpaRepository
 Domain -> Spring
 Domain -> Database
 

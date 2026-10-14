@@ -20,6 +20,11 @@ buildNumber.properties
 .classpath
 .settings/
 .vscode/
+.apt_generated
+.factorypath
+.settings
+.springBeans
+.sts4-cache
 *.swp
 *~
 
@@ -50,3 +55,17 @@ replay_pid*
 *.tar.gz
 *.rar
 !**/src/main/resources/**/*.jar
+
+HELP.md
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/

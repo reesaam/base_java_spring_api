@@ -17,8 +17,8 @@ These override the master prompt and the docs wherever they conflict.
 | D4 | No Flutter, Dart or GetX references anywhere in rules or code. |
 | D5 | One chat per phase. The owner starts each phase with the start command below. |
 | D6 | Source docs are only the ones the master prompt names, excluding `AI Implementation Spec.md`: `Manifest.md`, `Architecture.md`, `Dev Guide.md`, `Feature guide.md`, plus `Cursor Master Prompt.md`. `Implementation Brief.md`, `Executive Architecture Proposal.md` and `Manifest Summary.md` are not read during development. |
-| D7 | Database = connection module only: `DatabaseConfiguration` (connection string, username, password, pool settings) and a `DatabaseConnector` that provides the `DataSource`, behind a `database.enabled` flag. No JPA entities, schemas, migrations, H2, Oracle tests or `DatabaseConfigurationProvider`. |
-| D8 | Heavy checks are run by the owner: Oracle, Docker, Redis, Kafka, RabbitMQ, MinIO, Vault, Elastic, and running the app against real infrastructure. The agent only runs `mvn -q compile`, unit tests, and ArchUnit. |
+| D7 | Database = connection module only: `DatabaseConfiguration` (connection string, username, password, pool settings) and a `DatabaseConnector` that provides the `DataSource`, behind a `database.enabled` flag. |
+| D8 | Heavy checks are run by the owner: Docker, Redis, Kafka, RabbitMQ, MinIO, Vault, Elastic, and running the app against real infrastructure. The agent only runs `mvn -q compile`, unit tests, and ArchUnit. |
 | D9 | The owner picks the chat model per phase from the recommendation below. The agent does not spawn subagents (they re-read context and cost more). |
 | D10 | Ask the owner and wait when more than one real choice exists, the decision is important, the work would cost many tokens, or something looks not worth building now. Do not pick, skip, or implement past that point. An existing owner decision is not an open choice. |
 

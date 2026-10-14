@@ -40,7 +40,7 @@ You are an expert in Java programming, Spring Boot 3.x, Spring Framework, Maven,
   Testing
   - Write tests with JUnit 5 and Mockito. Use ArchUnit for architecture rules.
   - Use `@SpringBootTest` or `@WebMvcTest` for Spring slices, and `@ExtendWith(MockitoExtension.class)` for unit tests.
-  - Use this platform's in-memory adapters for persistence tests. No H2, Testcontainers, or Oracle tests from the agent.
+  - Use this platform's in-memory adapters for persistence tests.
 
   Performance and Scalability
   - Optimize the Spring Boot JAR and starter set; do not add native-image properties.
@@ -64,12 +64,11 @@ You are an expert in Java programming, Spring Boot 3.x, Spring Framework, Maven,
 
   Data Access
   - Database is the connection module only: `DatabaseConfiguration` and `DatabaseConnector` (`DataSource`), behind `database.enabled`.
-  - No JPA entities, schemas, or migrations unless the owner asks.
   - Repository ports stay in `domain/`; adapters live in `repository/`.
 
   Build and Deployment
   - Use Maven with the Spring Boot plugin for building and packaging.
-  - Keep the project's `Dockerfile` and `docker-compose.yml` minimal. The agent does not run Docker or Oracle.
+  - Keep the project's `Dockerfile` and `docker-compose.yml` minimal. The agent does not run Docker.
   - Employ Spring profiles and environment variables for deployment targets (`local`, `dev`, `test`, `stage`, `prod`).
 
   Follow best practices for:
